@@ -14,7 +14,31 @@ st.set_page_config(layout="wide", page_title="Houston Restaurant Explorer")
 st.markdown(
     """
 <style>
-.main { background-color: #f8fafc; }
+.main { background-color: #1a1a2e !important; }
+
+body, [data-testid="stAppViewContainer"] {
+    background-color: #1a1a2e !important;
+}
+
+/* Force all text elements to WHITE */
+[data-testid="stAppViewContainer"] * {
+    color: #ffffff !important;
+}
+
+[data-testid="stAppViewContainer"] p,
+[data-testid="stAppViewContainer"] span,
+[data-testid="stAppViewContainer"] h1,
+[data-testid="stAppViewContainer"] h2,
+[data-testid="stAppViewContainer"] h3,
+[data-testid="stAppViewContainer"] h4,
+[data-testid="stAppViewContainer"] h5,
+[data-testid="stAppViewContainer"] h6,
+[data-testid="stAppViewContainer"] b,
+[data-testid="stAppViewContainer"] strong,
+[data-testid="stAppViewContainer"] label,
+[data-testid="stAppViewContainer"] div {
+    color: #ffffff !important;
+}
 
 /* Sidebar container */
 [data-testid="stSidebar"]{
@@ -22,7 +46,7 @@ st.markdown(
     padding: 20px;
 }
 
-/* Keep labels/titles WHITE */
+/* Sidebar text WHITE */
 [data-testid="stSidebar"] h1,
 [data-testid="stSidebar"] h2,
 [data-testid="stSidebar"] h3,
@@ -30,35 +54,38 @@ st.markdown(
 [data-testid="stSidebar"] label,
 [data-testid="stSidebar"] .stMarkdown,
 [data-testid="stSidebar"] .stCaption,
-[data-testid="stSidebar"] span{
+[data-testid="stSidebar"] span,
+[data-testid="stSidebar"] * {
     color: white !important;
 }
 
-/* ✅ IMPORTANT: Make typed/selected values BLACK inside inputs/selects */
+/* Input fields - BLACK text */
 [data-testid="stSidebar"] input,
-[data-testid="stSidebar"] textarea{
-    color: #111827 !important; /* near-black */
-    caret-color: #111827 !important;
+[data-testid="stSidebar"] textarea {
+    color: #ffffff !important;
+    background-color: #2a2a3e !important;
+    caret-color: #ffffff !important;
 }
 
-/* TextInput placeholder (slightly gray) */
-[data-testid="stSidebar"] input::placeholder{
+[data-testid="stSidebar"] input::selection {
+    background-color: #4f46e5 !important;
+    color: #ffffff !important;
+}
+
+[data-testid="stSidebar"] input::placeholder {
     color: #6b7280 !important;
     opacity: 1 !important;
 }
 
-/* Selectbox / Multiselect (BaseWeb) - selected value + search text */
-[data-testid="stSidebar"] [data-baseweb="select"] *{
+[data-testid="stSidebar"] [data-baseweb="select"] * {
+    color: #ffffff !important;
+}
+
+[data-testid="stSidebar"] [data-baseweb="popover"] * {
     color: #111827 !important;
 }
 
-/* Dropdown menu options (the popup) */
-[data-testid="stSidebar"] [data-baseweb="popover"] *{
-    color: #111827 !important;
-}
-
-/* Slider value label should remain WHITE (optional, but keeps your style consistent) */
-[data-testid="stSidebar"] [data-testid="stSlider"] *{
+[data-testid="stSidebar"] [data-testid="stSlider"] * {
     color: white !important;
 }
 
@@ -71,19 +98,41 @@ st.markdown(
     background: rgba(255,255,255,0.18);
     border: none;
     transition: 0.3s;
+    color: white !important;
 }
+
 .stButton > button:hover {
     background: rgba(255,255,255,0.35);
     transform: translateY(-2px);
 }
 
-/* Card container */
+/* Card container - TRANSPARENT background with border */
 .card {
-    background: white;
+    background: transparent !important;
     border-radius: 18px;
     padding: 22px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border: 1px solid rgba(255,255,255,0.15) !important;
+    box-shadow: none !important;
     margin-bottom: 18px;
+}
+
+/* Force ALL text inside card to be WHITE */
+.card,
+.card * {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+}
+
+.card p {
+    color: #ffffff !important;
+}
+
+.card b,
+.card strong,
+.card span,
+.card label,
+.card div {
+    color: #ffffff !important;
 }
 
 /* KPI */
@@ -94,8 +143,17 @@ st.markdown(
     padding: 20px;
     text-align: center;
 }
-.kpi h2 { margin: 0; font-size: 30px; }
-.kpi p { opacity: 0.9; }
+
+.kpi h2 { 
+    margin: 0; 
+    font-size: 30px;
+    color: white !important;
+}
+
+.kpi p { 
+    opacity: 0.9;
+    color: white !important;
+}
 </style>
 """,
     unsafe_allow_html=True,
@@ -135,15 +193,15 @@ try:
 
     st.markdown(
         """
-<div class="card">
-<p style="margin:0; line-height:1.6;">
-    The primary objective of this dashboard is to provide an <b>interactive data visualization</b> that enables users
+<div class="card" style="color: #ffffff !important;">
+<p style="margin:0; line-height:1.6; color: #ffffff !important;">
+    The primary objective of this dashboard is to provide an <b style="color: #ffffff !important;">interactive data visualization</b> that enables users
     to explore the spatial distribution and key characteristics of restaurants in Houston in an intuitive and efficient way.
-    Using dynamic filters such as <b>price category</b>, <b>rating</b>, <b>delivery time</b>, <b>pickup time</b>, and
-    <b>pickup/delivery availability</b>, users can quickly refine the results to restaurants that best match their preferences.
-    This dashboard is designed to support a more <b>transparent</b>, <b>data-driven</b>, and easy-to-understand exploration experience.
+    Using dynamic filters such as <b style="color: #ffffff !important;">price category</b>, <b style="color: #ffffff !important;">rating</b>, <b style="color: #ffffff !important;">delivery time</b>, <b style="color: #ffffff !important;">pickup time</b>, and
+    <b style="color: #ffffff !important;">pickup/delivery availability</b>, users can quickly refine the results to restaurants that best match their preferences.
+    This dashboard is designed to support a more <b style="color: #ffffff !important;">transparent</b>, <b style="color: #ffffff !important;">data-driven</b>, and <b style="color: #ffffff !important;">easy-to-understand</b> exploration experience.
 </p>
-<p style="margin:10px 0 0 0; opacity:0.85;">
+<p style="margin:10px 0 0 0; opacity:0.85; color: #ffffff !important;">
     Dataset: Kaggle – Restaurants (GraphQuest)
 </p>
 </div>
