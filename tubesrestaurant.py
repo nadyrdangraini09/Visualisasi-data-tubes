@@ -14,13 +14,16 @@ st.set_page_config(layout="wide", page_title="Houston Restaurant Explorer")
 st.markdown(
     """
 <style>
-.main { background-color: #1a1a2e !important; }
+/* === MAIN CONTAINER === */
+.main { 
+    background-color: #1a1a2e !important; 
+}
 
 body, [data-testid="stAppViewContainer"] {
     background-color: #1a1a2e !important;
 }
 
-/* Force all text elements to WHITE */
+/* === TEXT COLOR DEFAULTS === */
 [data-testid="stAppViewContainer"] * {
     color: #ffffff !important;
 }
@@ -40,13 +43,13 @@ body, [data-testid="stAppViewContainer"] {
     color: #ffffff !important;
 }
 
-/* Sidebar container */
+/* === SIDEBAR CONTAINER === */
 [data-testid="stSidebar"]{
-    background: linear-gradient(180deg, #4f46e5, #4338ca);
+    background: linear-gradient(180deg, #4f46e5, #4338ca) !important;
     padding: 20px;
 }
 
-/* Sidebar text WHITE */
+/* === SIDEBAR TEXT === */
 [data-testid="stSidebar"] h1,
 [data-testid="stSidebar"] h2,
 [data-testid="stSidebar"] h3,
@@ -59,7 +62,7 @@ body, [data-testid="stAppViewContainer"] {
     color: white !important;
 }
 
-/* Input fields - BLACK text */
+/* === INPUT FIELDS === */
 [data-testid="stSidebar"] input,
 [data-testid="stSidebar"] textarea {
     color: #ffffff !important;
@@ -77,36 +80,117 @@ body, [data-testid="stAppViewContainer"] {
     opacity: 1 !important;
 }
 
-[data-testid="stSidebar"] [data-baseweb="select"] * {
+/* === SELECTBOX STYLING (hanya selectbox biasa, bukan multiselect) === */
+[data-testid="stSidebar"] .stSelectbox label {
+    color: #ffffff !important;
+    font-weight: 600 !important;
+}
+
+/* === SELECTBOX SELECTED VALUE - ORANGE BACKGROUND (hanya selectbox normal) === */
+[data-testid="stSidebar"] .stSelectbox [data-baseweb="select"] {
+    background-color: #ff8c42 !important;
+}
+
+[data-testid="stSidebar"] .stSelectbox [data-baseweb="select"] * {
+    background-color: #ff8c42 !important;
     color: #ffffff !important;
 }
 
-[data-testid="stSidebar"] [data-baseweb="popover"] * {
-    color: #111827 !important;
+[data-testid="stSidebar"] .stSelectbox [data-baseweb="select"] > div {
+    background-color: #ff8c42 !important;
+    color: #ffffff !important;
 }
 
+/* === DROPDOWN/POPOVER STYLING - ORANGE === */
+[data-baseweb="popover"] {
+    background-color: #ff8c42 !important;
+}
+
+[data-baseweb="popover"] div,
+[data-baseweb="popover"] span,
+[data-baseweb="popover"] li {
+    background-color: #ff8c42 !important;
+    color: #ffffff !important;
+}
+
+[data-baseweb="popover"] * {
+    background-color: #ff8c42 !important;
+    color: #ffffff !important;
+}
+
+[data-baseweb="popover"]:hover,
+[data-baseweb="popover"] *:hover {
+    background-color: #ff7722 !important;
+    color: #ffffff !important;
+}
+
+[data-baseweb="menu"] {
+    background-color: #ff8c42 !important;
+}
+
+[data-baseweb="menu"] * {
+    background-color: #ff8c42 !important;
+    color: #ffffff !important;
+}
+
+[data-baseweb="menu"]:hover,
+[data-baseweb="menu"] *:hover {
+    background-color: #ff7722 !important;
+    color: #ffffff !important;
+}
+
+[role="option"] {
+    background-color: #ff8c42 !important;
+    color: #ffffff !important;
+}
+
+[role="option"]:hover {
+    background-color: #ff7722 !important;
+    color: #ffffff !important;
+}
+
+[role="listbox"] {
+    background-color: #ff8c42 !important;
+}
+
+[role="listbox"] * {
+    background-color: #ff8c42 !important;
+    color: #ffffff !important;
+}
+
+ul[role="listbox"] li {
+    background-color: #ff8c42 !important;
+    color: #ffffff !important;
+}
+
+ul[role="listbox"] li:hover {
+    background-color: #ff7722 !important;
+    color: #ffffff !important;
+}
+
+/* === SLIDER === */
 [data-testid="stSidebar"] [data-testid="stSlider"] * {
     color: white !important;
 }
 
-/* Buttons */
+/* === BUTTONS === */
 .stButton > button {
     width: 100%;
     border-radius: 14px;
     padding: 12px;
     font-weight: 600;
-    background: rgba(255,255,255,0.18);
-    border: none;
+    background: rgba(255,255,255,0.18) !important;
+    border: none !important;
     transition: 0.3s;
     color: white !important;
 }
 
 .stButton > button:hover {
-    background: rgba(255,255,255,0.35);
+    background: rgba(255,255,255,0.35) !important;
     transform: translateY(-2px);
 }
 
-/* Card container - TRANSPARENT background with border */
+/* === CARD CONTAINER === */
 .card {
     background: transparent !important;
     border-radius: 18px;
@@ -116,17 +200,13 @@ body, [data-testid="stAppViewContainer"] {
     margin-bottom: 18px;
 }
 
-/* Force ALL text inside card to be WHITE */
 .card,
 .card * {
     color: #ffffff !important;
     fill: #ffffff !important;
 }
 
-.card p {
-    color: #ffffff !important;
-}
-
+.card p,
 .card b,
 .card strong,
 .card span,
@@ -135,10 +215,10 @@ body, [data-testid="stAppViewContainer"] {
     color: #ffffff !important;
 }
 
-/* KPI */
+/* === KPI BOXES === */
 .kpi {
-    background: linear-gradient(135deg, #6366f1, #818cf8);
-    color: white;
+    background: linear-gradient(135deg, #6366f1, #818cf8) !important;
+    color: white !important;
     border-radius: 18px;
     padding: 20px;
     text-align: center;
@@ -154,6 +234,18 @@ body, [data-testid="stAppViewContainer"] {
     opacity: 0.9;
     color: white !important;
 }
+
+/* === METRIC BOXES === */
+[data-testid="metric-container"] {
+    background-color: #2a2a3e !important;
+    border-radius: 12px;
+    padding: 16px !important;
+}
+
+[data-testid="metric-container"] * {
+    color: #ffffff !important;
+}
+
 </style>
 """,
     unsafe_allow_html=True,
